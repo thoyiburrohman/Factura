@@ -1,61 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Factura - Sistem Manajemen Invoice
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Laravel v11.x](https://img.shields.io/badge/Laravel-v12.x-FF2D20?style=flat-square&logo=laravel)](https://laravel.com/)
+[![Filament v3.x](https://img.shields.io/badge/Filament-v3.x-228B22?style=flat-square&logo=filament)](https://filamentphp.com/)
+[![Livewire v3.x](https://img.shields.io/badge/Livewire-v3.x-4B4B4B?style=flat-square&logo=livewire)](https://livewire.laravel.com/)
 
-## About Laravel
+**Factura** adalah aplikasi manajemen invoice berbasis Laravel dan Filament v3, dengan fitur multi-perusahaan, penomoran otomatis, dan pembuatan PDF..
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Dashboard Admin Profesional**: Dibuat sepenuhnya dengan [Filament v3](https://filamentphp.com/), memberikan pengalaman pengguna yang cepat dan reaktif.
+-   **Manajemen Multi-Perusahaan**: Memungkinkan satu pengguna untuk mengelola beberapa profil perusahaan dan menerbitkan invoice atas nama perusahaan yang berbeda.
+-   **Manajemen Invoice**: CRUD lengkap untuk membuat, melihat, mengubah, dan menghapus invoice.
+-   **Penomoran Invoice Otomatis**: Nomor invoice dibuat secara otomatis dengan format `INV/TAHUN/BULAN/URUT` berdasarkan tanggal invoice yang dipilih.
+-   **Kalkulasi Pajak & Total Otomatis**: Perhitungan PPN (11%) dan Grand Total dilakukan secara otomatis menggunakan Accessor pada Model.
+-   **Status Invoice & Watermark**: Status invoice (Lunas, Belum Lunas, dll.) yang dapat diubah dan akan secara otomatis menampilkan watermark pada dokumen PDF.
+-   **Preview & Download PDF**: Fitur untuk melihat pratinjau invoice dalam format A4 secara langsung di browser atau mengunduhnya.
+-   **Template PDF Modern**: Tampilan invoice yang bersih dan profesional dibuat menggunakan Tailwind CSS.
+-   **Koneksi ke Database Supabase**: Siap untuk dihubungkan dengan layanan database modern PostgreSQL.
 
-## Learning Laravel
+## Teknologi yang Digunakan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   **Backend**: Laravel 12
+-   **Admin Panel**: Filament 3
+-   **Frontend**: Tailwind CSS, Alpine.js (via Filament)
+-   **Asset Bundling**: Vite
+-   **Database**: PostgreSQL (di-hosting di Supabase)
+-   **PDF Generation**: barryvdh/laravel-dompdf
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalasi & Setup Proyek
 
-## Laravel Sponsors
+Berikut adalah langkah-langkah untuk menjalankan proyek ini di lingkungan baru (lokal atau server hosting).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1.  **Clone Repositori**
+    ```bash
+    git clone [https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git](https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git)
+    cd NAMA_REPO_ANDA
+    ```
 
-### Premium Partners
+2.  **Instalasi Dependensi**
+    ```bash
+    composer install
+    npm install
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3.  **Konfigurasi Lingkungan (.env)**
+    Salin file `.env.example` menjadi `.env` baru, lalu generate kunci aplikasi.
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-## Contributing
+4.  **Atur Variabel di `.env`**
+    Buka file `.env` dan atur variabel-variabel berikut:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```env
+    APP_NAME=Factura
+    APP_ENV=local
+    APP_DEBUG=true
+    APP_URL=http://localhost
 
-## Code of Conduct
+    # Gunakan format DB_URL dari Connection Pooler Supabase
+    DB_CONNECTION=pgsql
+    DATABASE_URL="postgres://postgres.[PROJECT_REF]:[PASSWORD_ANDA]@[AWS_REGION][.pooler.supabase.com:6543/postgres](https://.pooler.supabase.com:6543/postgres)"
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5.  **Build Aset Frontend**
+    ```bash
+    npm run build
+    ```
 
-## Security Vulnerabilities
+6.  **Jalankan Migrasi Database**
+    ```bash
+    php artisan migrate
+    ```
+    *Untuk mengisi data awal, jalankan: `php artisan migrate --seed`*
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7.  **Buat Pengguna Admin Pertama**
+    ```bash
+    php artisan make:filament-user
+    ```
+    Ikuti petunjuk di layar untuk memasukkan nama, email, dan password Anda.
 
-## License
+9.  **Jalankan Server Development (Lokal)**
+    ```bash
+    php artisan serve
+    ```
+    Sekarang Anda bisa mengakses aplikasi di `http://localhost:8000` dan login ke panel admin di `http://localhost:8000/admin`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Lisensi
+
+Proyek ini berada di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
