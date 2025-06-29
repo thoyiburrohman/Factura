@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/thoyibur/public_html/factura
+    - /bin/cp -r app $DEPLOYPATH
+    - /bin/cp -r public $DEPLOYPATH
+    - /bin/cp -r resources $DEPLOYPATH
+    - /bin/cp -r routes $DEPLOYPATH
